@@ -9,7 +9,7 @@ function FormById({posts, setPosts}) {
         console.log(`The id you entered was: ${id}`)
         console.log(posts);
         console.log(parseInt(id));
-        posts =  posts.filter((post)=>post.userId = parseInt(id));
+        posts =  posts.filter((post)=>post.userId === parseInt(id));
         setPosts(posts);
         console.log(posts);
     }
