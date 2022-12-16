@@ -1,21 +1,30 @@
-import { useState } from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+
 
 function FormById({posts, setPosts}) {
-    const [id, setId] = useState('');
+    const [inputValue, setInputValue] = useState('');
 
-    const handleInput = async (e) => {
-        e.preventDefault();
-        let id = await e.target.value;
-        console.log(`The id you entered was: ${id}`)
-        console.log(posts);
-        console.log(parseInt(id));
-        posts =  posts.filter((post)=>post.userId === parseInt(id));
-        setPosts(posts);
-        console.log(posts);
-    }
-    return <form onChange={handleInput}>
+    useEffect(() => {
+        async function fetchData() {
+            const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${inputValue}`)
+            console.log(response.data)
+            setPosts(response.data);
+
+        }
+        fetchData();
+    }, [inputValue]);
+
+
+
+    return <form>
         <div>
-            <input  type="number" name="filterByUser" id="filterByUser" value = { id } onChange={(e) => setId(e.target.value)}/>
+            <input
+                type="number"
+                value={inputValue}
+                onChange={e => setInputValue(e.target.value)}
+            />
+
             <label htmlFor="filterByUser">Only show posts from user</label>
         </div>
     </form>

@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import './App.css';
-
+import React from 'react';
 import Form from "./Components/Form";
 import Table from "./Components/Table";
 import FormById from "./Components/FormById";
-
 
 function App() {
 
@@ -25,14 +24,15 @@ function App() {
         fetchData();
     }, []);
 
-      return (
+    return (
         <div className="App">
+
             <Form posts={posts} setPosts={setPosts} />
             <FormById posts={posts} setPosts={setPosts} />
             <Table posts={posts} error={error} />
-        </div>
 
-      );
+        </div>
+    );
 }
 
 export default App;
