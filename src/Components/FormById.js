@@ -19,12 +19,7 @@ function FormById({posts, setPosts}) {
 
     return <form>
         <div>
-            <input
-                type="number"
-                value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
-            />
-
+            <input type="number" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
             <label htmlFor="filterByUser">Only show posts from user</label>
         </div>
     </form>
